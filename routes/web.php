@@ -72,7 +72,7 @@ Route::post('/applications/{id}', [JobController::class, 'apply'])->name('apply'
 //save and unsave job
 Route::post('/save/{id}', [FavouriteController::class, 'saveJob']);
 
-Route::post('/unsave/{id}', [FavouriteController::class, ']unSaveJob']);
+Route::post('/unsave/{id}', [FavouriteController::class, 'unSaveJob']);
 
 //category
 Route::get('/category/{id}/jobs', [CategoryController::class, 'index'])->name('category.index');

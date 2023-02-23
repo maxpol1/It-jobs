@@ -94,7 +94,7 @@
             </div>
         </div>
 
-{{$jobs->appends(Illuminate\Support\Facades\Input::except('page'))->links()}}
+        {{$jobs->appends(\Symfony\Component\Console\Input\Input::except('page'))->links()}}
 
     </div>
 
