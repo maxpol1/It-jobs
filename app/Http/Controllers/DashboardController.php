@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Post;
 use App\Models\Job;
+use Illuminate\Support\Str;
+
 class DashboardController extends Controller
 {
     public function index(){
@@ -26,7 +28,7 @@ class DashboardController extends Controller
    			$path = $file->store('uploads','public');
    			Post::create([
    				'title'=>$title=$request->get('title'),
-   				'slug'=>str_slug($title),
+   				'slug'=>Str::slug($title),
    				'content'=>$request->get('content'),
    				'image'=>$path,
    				'status'=>$request->get('status')

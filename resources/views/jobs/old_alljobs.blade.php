@@ -25,7 +25,7 @@
             <select name="category_id" class="form-control">
                 <option value="">-select-</option>
 
-                    @foreach(App\Category::all() as $cat)
+                    @foreach(App\Models\Category::all() as $cat)
                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                     @endforeach
                 </select>
@@ -36,7 +36,7 @@
             <label>address</label>
             <input type="text" name="address" class="form-control">&nbsp;&nbsp;
         </div>
-        
+
         <div class="form-group">
             <button type="submit" class="btn btn-outline-success">Search</button>
         </div>
@@ -45,7 +45,7 @@
 
 
         <table class="table">
-            
+
             <tbody>
                 @foreach($jobs as $job)
                 <tr>
@@ -61,7 +61,7 @@
                             <button class="btn btn-success btn-sm">     Apply
                             </button>
                         </a>
-                        
+
                 </td>
                 </tr>
                 @endforeach

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
-use App\Testimonial;
+
+
 class TestimonialController extends Controller
 {
 	public function index(){
@@ -31,7 +33,7 @@ class TestimonialController extends Controller
     	]);
     	return redirect()->back()->with('message','Testimonila created successfully');
 
-    	
+
     }
 
 

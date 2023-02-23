@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mail;
+use Illuminate\Support\Facades\Mail;
+
 use App\Mail\SendJob;
+
+
 class EmailController extends Controller
 {
     public function send(Request $request){
@@ -16,7 +19,6 @@ class EmailController extends Controller
     		'friend_name'=>'required|string',
     		'friend_email'=>'required|email'
     	]);
-
     	$homeUrl = url('/');
     	$jobId = $request->get('job_id');
     	$jobSlug = $request->get('job_slug');
@@ -41,9 +43,9 @@ class EmailController extends Controller
     		return redirect()->back()->with('err_message','Sorry, Something went wrong.Please try later');
 
     	}
-    	
 
-    	
+
+
 
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
-use App\Profile;
 use App\Models\Job;
 class UserController extends Controller
 {

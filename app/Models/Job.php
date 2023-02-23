@@ -4,6 +4,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Job extends Model
 {
@@ -15,9 +16,9 @@ class Job extends Model
     public function company(){
     	return $this->belongsTo('App\Company');
     }
-  
-  
-    
+
+
+
     public function users(){
         return $this->belongsToMany(User::class)->withTimeStamps();
     }
@@ -32,6 +33,6 @@ class Job extends Model
     public function checkSaved(){
         return DB::table('favourites')->where('user_id',auth()->user()->id)->where('job_id',$this->id)->exists();
     }
-     
+
 
 }

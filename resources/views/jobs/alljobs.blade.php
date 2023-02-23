@@ -27,7 +27,7 @@
             <select name="category_id" class="form-control">
                 <option value="">-select-</option>
 
-                    @foreach(App\Category::all() as $cat)
+                    @foreach(App\Models\Category::all() as $cat)
                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                     @endforeach
                 </select>
@@ -38,7 +38,7 @@
             <label>address</label>
             <input type="text" name="address" class="form-control" placeholder="address">&nbsp;&nbsp;
         </div>
-        
+
         <div class="form-group">
             <input type="submit" class="btn btn-search btn-primary btn-block" value="Search">
 
@@ -82,7 +82,7 @@
                   </div>
                   @endif
 
-                </div>  
+                </div>
               </a>
 
             @endforeach

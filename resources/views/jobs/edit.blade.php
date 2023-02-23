@@ -24,9 +24,9 @@
                     <strong>{{ $errors->first('title') }}</strong>
                 </span>
                  @endif
-                
+
             </div>
-            
+
             <div class="form-group">
                 <label for="role">Description:</label>
             <textarea name="description" class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}" >{{ $job->description }}</textarea>
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label for="category">Category:</label>
                 <select name="category_id" class="form-control">
-                    @foreach(App\Category::all() as $cat)
+                    @foreach(App\Models\Category::all() as $cat)
                         <option value="{{$cat->id}}" {{$cat->id==$job->category_id?'selected':''}}>{{$cat->name}}</option>
                     @endforeach
                 </select>
@@ -97,7 +97,7 @@
 
               <div class="form-group">
                 <label for="type">Gender:</label>
-                
+
                  <select class="form-control" name="gender">
                     <option value="fulltime"{{$job->gender=='any'?'selected':''}}>Any</option>
                     <option value="partime"{{$job->gender=='male'?'selected':''}}>Male</option>
@@ -147,7 +147,7 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-dark">Submit</button>
             </div>
-             
+
 
 
 
