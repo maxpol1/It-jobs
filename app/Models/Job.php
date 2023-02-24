@@ -14,7 +14,7 @@ class Job extends Model
 		return 'slug';
 	}
     public function company(){
-    	return $this->belongsTo('App\Company');
+    	return $this->belongsTo(Company::class);
     }
 
 

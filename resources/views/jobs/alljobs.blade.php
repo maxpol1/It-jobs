@@ -61,7 +61,7 @@
                     <h3>{{$job->position}}</h3>
                     <div class="d-block d-lg-flex">
                       <div class="mr-3"><span class="icon-suitcase mr-1"></span> {{$job->company->cname}}</div>
-                      <div class="mr-3"><span class="icon-room mr-1"></span> {{str_limit($job->address,20)}}</div>
+                      <div class="mr-3"><span class="icon-room mr-1"></span> {{\Illuminate\Support\Str::limit($job->address,20)}}</div>
                       <div><span class="icon-money mr-1"></span>{{$job->salary}}</div>
                       <div>&nbsp;<span class="fa fa-clock-o mr-1"></span>{{$job->created_at->diffForHumans()}}</div>
                     </div>
@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        {{$jobs->appends(\Symfony\Component\Console\Input\Input::except('page'))->links()}}
+        {{$jobs->links()}}
 
     </div>
 

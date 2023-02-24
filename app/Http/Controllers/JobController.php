@@ -7,6 +7,7 @@ use App\Models\Company;
 use App\Models\Job;
 use App\Models\Post;
 use App\Models\Testimonial;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Requests\JobPostRequest;
 use Illuminate\Support\Facades\Auth;
@@ -97,30 +98,31 @@ class JobController extends Controller
 
 
     public function  create(){
+
         return view('jobs.create');
     }
     public function  store(JobPostRequest $request){
 
-        $user_id = auth()->user()->id;
+        $user_id = Auth::id();
         $company = Company::where('user_id',$user_id)->first();
         $company_id = $company->id;
         Job::create([
             'user_id' => $user_id,
             'company_id' => $company_id,
-            'title'=>request('title'),
-            'slug' =>Str::slug(request('title')),
-            'description'=>request('description'),
-            'roles'=>request('roles'),
-            'category_id' =>request('category'),
-            'position'=>request('position'),
-            'address'=>request('address'),
-            'type'=>request('type'),
-            'status'=>request('status'),
-            'last_date'=>request('last_date'),
-            'number_of_vacancy'=>request('number_of_vacancy'),
-            'gender'=>request('gender'),
-            'experience'=>request('experience'),
-            'salary'=>request('salary')
+            'title'=>$request->input('title'),
+            'slug' =>Str::slug($request->input('title')),
+            'description'=>$request->input('description'),
+            'roles'=>$request->input('roles'),
+            'category_id' =>$request->input('category'),
+            'position'=>$request->input('position'),
+            'address'=>$request->input('address'),
+            'type'=>$request->input('type'),
+            'status'=>$request->input('status'),
+            'last_date'=>Carbon::parse($request->input('last_date')),
+            'number_of_vacancy'=>$request->input('number_of_vacancy'),
+            'gender'=>$request->input('gender'),
+            'experience'=>$request->input('experience'),
+            'salary'=>$request->input('salary')
 
 
 

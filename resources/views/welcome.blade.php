@@ -36,7 +36,7 @@
                   <h3>{{$job->position}}</h3>
                   <div class="d-block d-lg-flex">
                     <div class="mr-3"><span class="icon-suitcase mr-1"></span> {{$job->company->cname}}</div>
-                    <div class="mr-3"><span class="icon-room mr-1"></span> {{str_limit($job->address,20)}}</div>
+                    <div class="mr-3"><span class="icon-room mr-1"></span> {{\Illuminate\Support\Str::limit($job->address,20)}}</div>
                     <div><span class="icon-money mr-1"></span>{{$job->salary}}</div>
                   </div>
                 </div>

@@ -78,7 +78,7 @@
 
                 <div class="col-md-4 p-4 site-section bg-light">
                     <h3 class="h5 text-black mb-3 text-center">Short Info</h3>
-                    <p>Company name:{{$job->company->cname}}</p>
+                    <p>Company name:<a href="{{ route('company.index',[$job->company->id, $job->company->slug]) }}"></a>{{$job->company->cname}}</p>
                     <p>Address:{{$job->address}}</p>
                     <p>Employment Type:{{$job->type}}</p>
                     <p>Position:{{$job->position}}</p>
@@ -114,7 +114,7 @@
                         <div class="card-body">
                             <p class="badge badge-success">{{$jobRecommendation->type}}</p>
                             <h5 class="card-title">{{$jobRecommendation->position}}</h5>
-                            <p class="card-text">{{str_limit($jobRecommendation->description,90)}}
+                            <p class="card-text">{{\Illuminate\Support\Str::limit($jobRecommendation->description,90)}}
                             <center><a href="{{route('jobs.show',[$jobRecommendation->id,$jobRecommendation->slug])}}"
                                        class="btn btn-success">Apply</a></center>
                         </div>

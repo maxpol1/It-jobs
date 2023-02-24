@@ -32,7 +32,7 @@
                                     <td><img src="{{asset('storage/'.$post->image)}}" width="80"></td>
                                     <td><a href="{{route('post.show',[$post->id,$post->slug])}}"
                                            target="_blank">{{$post->title}}</a></td>
-                                    <td>{{str_limit($post->content,20)}}</td>
+                                    <td>{{\Illuminate\Support\Str::limit($post->content,20)}}</td>
                                     <td>
                                         @if($post->status=='0')
                                             <a href="{{route('post.toggle',[$post->id])}}" class="badge badge-primary">

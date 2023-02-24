@@ -32,7 +32,7 @@ Route::post('/jobs/{id}/edit', [JobController::class, 'update'])->name('job.upda
 Route::get('/jobs/my-job', [JobController::class, 'myjob'])->name('my.job');
 
 Route::get('/jobs/applications', [JobController::class, 'applicant'])->name('applicant');
-Route::get('/jobs/alljobs', [JobController::class, 'allJobs'])->name('alljobs');
+Route::get('/jobs', [JobController::class, 'allJobs'])->name('alljobs');
 
 Auth::routes();
 
