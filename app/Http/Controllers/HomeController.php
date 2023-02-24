@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use Illuminate\Contracts\Support\Renderable;
     use Illuminate\Support\Facades\Auth;
 
     class HomeController extends Controller
@@ -19,9 +20,9 @@
         /**
          * Show the application dashboard.
          *
-         * @return \Illuminate\Contracts\Support\Renderable
+         * @return Renderable
          */
-        public function index()
+        public function index(): Renderable
         {
             if (auth()->user()->user_type == 'employer') {
                 return redirect()->to('/company/create');

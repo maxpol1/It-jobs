@@ -47,7 +47,6 @@ Route::post('company/create', [CompanyController::class, 'store'])->name('compan
 
 
 Route::post('company/coverphoto', [CompanyController::class, 'coverPhoto'])->name('cover.photo');
-
 Route::post('company/logo', [CompanyController::class, 'companyLogo'])->name('company.logo');
 
 
@@ -82,23 +81,22 @@ Route::get('/companies', [CompanyController::class, 'company'])->name('company')
 
 
 //admin
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('admin');
-Route::get('/dashboard/create', [DashboardController::class, 'create'])->middleware('admin');
-Route::post('/dashboard/create', [DashboardController::class, 'store'])->name('post.store')->middleware('admin');
-Route::post('/dashboard/destroy', [DashboardController::class, 'destroy'])->name('post.delete')->middleware('admin');
+Route::prefix('admin')->middleware('admin')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin_dashboard');
+    Route::get('/dashboard/create', [DashboardController::class, 'create'])->name('post.create');
+    Route::post('/dashboard/create', [DashboardController::class, 'store'])->name('post.store');
+    Route::post('/dashboard/destroy', [DashboardController::class, 'destroy'])->name('post.delete');
 
-Route::get('/dashboard/{id}/edit', [DashboardController::class, 'edit'])->name('post.edit')->middleware('admin');
-Route::post('/dashboard/{id}/update', [DashboardController::class, 'update'])->name('post.update')->middleware('admin');
+    Route::get('/dashboard/{id}/edit', [DashboardController::class, 'edit'])->name('post.edit');
+    Route::post('/dashboard/{id}/update', [DashboardController::class, 'update'])->name('post.update');
 
-Route::get('/dashboard/trash', [DashboardController::class, 'trash'])->middleware('admin');
+    Route::get('/dashboard/{id}/toggle', [DashboardController::class, 'toggle'])->name('post.toggle');
+    Route::get('/posts/{id}/{slug}', [DashboardController::class, 'show'])->name('post.show')->excludedMiddleware('admin');
 
-Route::get('/dashboard/{id}/trash', [DashboardController::class, 'restore'])->name('post.restore')->middleware('admin');
+    Route::get('/dashboard/jobs', [DashboardController::class, 'getAllJobs']);
+    Route::get('/dashboard/{id}/jobs', [DashboardController::class, 'changeJobStatus'])->name('job.status');
+});
 
-Route::get('/dashboard/{id}/toggle', [DashboardController::class, 'toggle'])->name('post.toggle')->middleware('admin');
-Route::get('/posts/{id}/{slug}', [DashboardController::class, 'show'])->name('post.show');
-
-Route::get('/dashboard/jobs', [DashboardController::class, 'getAllJobs'])->middleware('admin');
-Route::get('/dashboard/{id}/jobs', [DashboardController::class, 'changeJobStatus'])->name('job.status')->middleware('admin');
 
 
 //testimonial

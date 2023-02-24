@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\ProfileCoverletterRequest;
+use App\Http\Requests\ProfileResumeUpdateRequest;
+use App\Http\Requests\ProfileStoreRequest;
+use App\Http\Requests\ProfileUploadAvatarRequest;
 use App\Models\Profile;
 use Illuminate\Http\Request;
 use App\Models\Job;
@@ -25,31 +29,22 @@ class UserController extends Controller
     	return view('profile.index');
     }
 
-    public function store(Request $request){
-        $this->validate($request,[
-
-            'address'=>'required',
-            'bio'=>'required|min:20',
-            'experience'=>'required|min:20',
-            'phone_number'=>'required|min:10|numeric'
-        ]);
+    public function store(ProfileStoreRequest $request){
 
    		$user_id = auth()->user()->id;
 
       Profile::where('user_id',$user_id)->update([
-        'address'=>request('address'),
-   			'experience'=>request('experience'),
-   			'bio'=>request('bio'),
-            'phone_number'=>request('phone_number')
+        'address'=>$request->input('address'),
+   			'experience'=>$request->input('experience'),
+   			'bio'=>$request->input('bio'),
+            'phone_number'=>$request->input('phone_number')
    		]);
    		return redirect()->back()->with('message','Profile Sucessfully Updated!');
 
    }
 
-    public function coverletter(Request $request){
-        $this->validate($request,[
-            'cover_letter'=>'required|mimes:pdf,doc,docx|max:20000'
-        ]);
+    public function coverletter(ProfileCoverletterRequest $request){
+
         $user_id = auth()->user()->id;
         $cover = $request->file('cover_letter')->store('public/files');
             Profile::where('user_id',$user_id)->update([
@@ -60,10 +55,8 @@ class UserController extends Controller
 
 
    }
-    public function resume(Request $request){
-        $this->validate($request,[
-            'resume'=>'required|mimes:pdf,doc,docx|max:20000'
-        ]);
+    public function resume(ProfileResumeUpdateRequest $request){
+
           $user_id = auth()->user()->id;
           $resume = $request->file('resume')->store('public/files');
             Profile::where('user_id',$user_id)->update([
@@ -75,10 +68,8 @@ class UserController extends Controller
 
    }
 
-    public function avatar(Request $request){
-        $this->validate($request,[
-            'avatar'=>'required|mimes:png,jpeg,jpg|max:20000'
-        ]);
+    public function avatar(ProfileUploadAvatarRequest $request){
+
         $user_id = auth()->user()->id;
         if($request->hasfile('avatar')){
             $file = $request->file('avatar');

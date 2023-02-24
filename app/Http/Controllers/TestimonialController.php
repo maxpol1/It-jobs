@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestimonialStoreRequest;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -17,15 +18,9 @@ class TestimonialController extends Controller
     	return view('testimonial.create');
     }
 
-    public function store(Request $request){
-    	$this->validate($request,[
-    		'content'=>'required|min:40|max:500',
-    		'name'=>'required',
-    		'profession'=>'required',
-    		'video_id'=>'required|integer'
-    	]);
-    	Testimonial::create([
+    public function store(TestimonialStoreRequest $request){
 
+    	Testimonial::create([
     		'content'=>$request->get('content'),
     		'name'=>$request->get('name'),
     		'profession'=>$request->get('profession'),

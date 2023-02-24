@@ -26,10 +26,10 @@
                         <div class="company-desc">
                             @if(empty($company->logo))
 
-                                <img width="100" src="{{asset('avatar/man.jpg')}}">
+                                <img width="100" src="{{asset('/avatar/man.jpg')}}">
 
                             @else
-                                <img width="100" src="{{asset('uploads/logo')}}/{{$company->logo}}">
+                                <img width="100" src="{{asset('/uploads/logo')}}/{{$company->logo}}">
 
 
                             @endif

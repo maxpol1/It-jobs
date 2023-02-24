@@ -52,7 +52,7 @@
             </div>
         </div>
 
-    {{$jobs->appends(Illuminate\Support\Facades\Input::except('page'))->links()}}
+    {{$jobs->links()}}
 
 
 
