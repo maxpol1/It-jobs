@@ -8,15 +8,22 @@ use App\Http\Requests\ProfileResumeUpdateRequest;
 use App\Http\Requests\ProfileStoreRequest;
 use App\Http\Requests\ProfileUploadAvatarRequest;
 use App\Models\Profile;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Models\Job;
+use Illuminate\Support\Facades\Auth;
+
 class UserController extends Controller
 {
     public function __construct(){
         $this->middleware(['seeker','verified']);
     }
 
-    public function users(Request $request)
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function users(Request $request): JsonResponse
     {
         $query = $request->get('query');
         $users = Job::where('title','like','%'.$query.'%')
@@ -26,7 +33,8 @@ class UserController extends Controller
     }
 
     public function index(){
-    	return view('profile.index');
+        $profile = Profile::where('user_id', Auth::id())->firstOrNew();
+    	return view('profile.index', compact('profile'));
     }
 
     public function store(ProfileStoreRequest $request){

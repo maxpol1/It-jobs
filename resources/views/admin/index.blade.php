@@ -70,7 +70,8 @@
                                                     <div class="modal-body">
                                                         Do you want to delete?
                                                     </div>
-                                                    <form action="{{route('post.delete')}}" method="POST">@csrf
+                                                    <form action="{{route('post.delete')}}" method="POST">
+                                                        @csrf
                                                         <div class="modal-footer">
                                                             <input type="hidden" name="id" value="{{$post->id}}">
                                                             <button type="button" class="btn btn-secondary"
@@ -82,8 +83,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
                                     </td>
                                 </tr>
                             @endforeach
@@ -97,6 +96,4 @@
             </div>
         </div>
     </div>
-
-
 @endsection

@@ -23,7 +23,6 @@
                                 <th scope="col">Satus</th>
                                 <th>Date</th>
                                 <th scope="col">Action</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -44,21 +43,16 @@
                                         <a href="{{route('post.restore',[$post->id])}}">
                                             <button class="btn btn-success">Restore</button>
                                         </a>
-
-
                                     </td>
                                 </tr>
                             @endforeach
-
                             </tbody>
                         </table>
                         {{$posts->links()}}
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
 @endsection

@@ -13,6 +13,7 @@
                         </div>
 
                         <div class="card-body">
+{{--                            @dd($applicant->users)--}}
                             @foreach($applicant->users as $user)
 
                                 <table class="table" style="width: 100%;">
@@ -28,19 +29,19 @@
                                                 <img src="{{asset('uploads/avatar/man.jpg')}}" width="80">
                                             @endif
 
-                                            <br>Applied on:{{ date('F d, Y', strtotime($applicant->created_at)) }}
+                                            <br>Дата публикации:{{ date('F d, Y', strtotime($applicant->created_at)) }}
                                         </td>
-                                        <td>Name:{{$user->name}}</td>
+                                        <td>Имя:{{$user->name}}</td>
                                         <td>Email{{$user->email}}</td>
-                                        <td>Address:{{$user->profile->address}}</td>
-                                        <td>Gender{{$user->profile->gender}}</td>
-                                        <td>Experience:{{$user->profile->experience}}</td>
-                                        <td>Bio:{{$user->profile->bio}}</td>
-                                        <td>Phone:{{$user->profile->phone_number}}</td>
+                                        <td>Адрес:{{$user->profile->address}}</td>
+                                        <td>Пол{{$user->profile->gender}}</td>
+                                        <td>Опыт:{{$user->profile->experience}}</td>
+                                        <td>О себе:{{$user->profile->bio}}</td>
+                                        <td>Телефон:{{$user->profile->phone_number}}</td>
 
-                                        <td><a href="{{Storage::url($user->profile->resume)}}">Resume</a></td>
+                                        <td><a href="{{Storage::url($user->profile->resume)}}">Резюме</a></td>
 
-                                        <td><a href="{{Storage::url($user->profile->cover_letter)}}">Cover letter</a>
+                                        <td><a href="{{Storage::url($user->profile->cover_letter)}}">Сопроводительное письмо</a>
                                         </td>
                                         <td></td>
 

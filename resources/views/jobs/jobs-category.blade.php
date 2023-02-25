@@ -45,7 +45,7 @@
 
             @endforeach
             @else
-            No jobs found
+                Вакансий не найдено
             @endif
 
 

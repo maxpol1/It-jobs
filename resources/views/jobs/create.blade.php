@@ -13,13 +13,14 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Create a job</div>
+                    <div class="card-header">Добавить вакансию</div>
                     <div class="card-body">
 
-                        <form action="{{route('job.store')}}" method="POST">@csrf
+                        <form action="{{route('job.store')}}" method="POST">
+                            @csrf
 
                             <div class="form-group">
-                                <label for="title">Title:</label>
+                                <label for="title">Название вакансии:</label>
                                 <input type="text" name="title"
                                        class="form-control {{ $errors->has('title') ? ' is-invalid' : '' }}"
                                        value="{{ old('title') }}">
@@ -32,7 +33,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="description">Description:</label>
+                                <label for="description">Описание ваканси:</label>
                                 <textarea name="description" id="summernote"
                                           class="form-control {{ $errors->has('description') ? ' is-invalid' : '' }}">{{ old('description') }}</textarea>
                                 @if ($errors->has('description'))
@@ -43,7 +44,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="role">Role:</label>
+                                <label for="role">Обязоности:</label>
                                 <textarea name="roles"
                                           class="form-control {{ $errors->has('roles') ? ' is-invalid' : '' }}">{{old('roles')}}</textarea>
                                 @if ($errors->has('roles'))
@@ -53,7 +54,7 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <label for="category">Category:</label>
+                                <label for="category">Категория:</label>
                                 <select name="category" class="form-control">
                                     @foreach(App\Models\Category::all() as $cat)
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
@@ -62,7 +63,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="position">Position:</label>
+                                <label for="position">Должность:</label>
                                 <input type="text" name="position"
                                        class="form-control {{ $errors->has('position') ? ' is-invalid' : '' }}"
                                        value="{{ old('position') }}">
@@ -74,7 +75,7 @@
 
                             </div>
                             <div class="form-group">
-                                <label for="address">Address:</label>
+                                <label for="address">Адрас:</label>
                                 <input type="text" name="address"
                                        class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}"
                                        value="{{ old('address') }}">
@@ -87,7 +88,7 @@
 
 
                             <div class="form-group">
-                                <label for="number_of_vacancy">No of vacancy:</label>
+                                <label for="number_of_vacancy">Количество вакансий:</label>
                                 <input type="text" name="number_of_vacancy"
                                        class="form-control{{ $errors->has('number_of_vacancy') ? ' is-invalid' : '' }}"
                                        value="{{ old('number_of_vacancy') }}">
@@ -99,7 +100,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="experience">Year of experience:</label>
+                                <label for="experience">Стаж:</label>
                                 <input type="text" name="experience"
                                        class="form-control{{ $errors->has('experience') ? ' is-invalid' : '' }}"
                                        value="{{ old('experience') }}">
@@ -111,16 +112,16 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="type">Gender:</label>
+                                <label for="type">Пол:</label>
                                 <select class="form-control" name="gender">
-                                    <option value="any">Any</option>
-                                    <option value="male">male</option>
-                                    <option value="female">female</option>
+                                    <option value="any">Любой</option>
+                                    <option value="male">муж</option>
+                                    <option value="female">жен</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label for="type">Salary/year:</label>
+                                <label for="type">Зарплата от:</label>
                                 <select class="form-control" name="salary">
                                     <option value="negotiable">Negotiable</option>
                                     <option value="2000-5000">2000-5000</option>
@@ -128,29 +129,28 @@
                                     <option value="10000-20000">10000-20000</option>
                                     <option value="30000-500000">50000-500000</option>
                                     <option value="500000-600000">500000-600000</option>
-
                                     <option value="600000 plus">600000 plus</option>
                                 </select>
                             </div>
 
 
                             <div class="form-group">
-                                <label for="type">Type:</label>
+                                <label for="type">Тип занятости:</label>
                                 <select class="form-control" name="type">
-                                    <option value="fulltime">fulltime</option>
-                                    <option value="parttime">parttime</option>
-                                    <option value="casual">casual</option>
+                                    <option value="fulltime">полная</option>
+                                    <option value="parttime">частичная</option>
+                                    <option value="casual">подработка</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="status">Status:</label>
+                                <label for="status">Статус:</label>
                                 <select class="form-control" name="status">
-                                    <option value="1">live</option>
-                                    <option value="0">draft</option>
+                                    <option value="1">активная</option>
+                                    <option value="0">не активная</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="lastdate">Last date:</label>
+                                <label for="lastdate">Активна до:</label>
                                 <input type="text" id="datepicker" name="last_date"
                                        class="form-control {{ $errors->has('last_date') ? ' is-invalid' : '' }}"
                                        value="{{ old('last_date') }}">
@@ -162,7 +162,7 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-dark">Submit</button>
+                                <button type="submit" class="btn btn-dark">Применить</button>
                             </div>
 
                         </form>

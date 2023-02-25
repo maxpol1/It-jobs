@@ -6,7 +6,6 @@ use App\Models\Category;
 use App\Models\Company;
 use App\Models\Job;
 use App\Models\Post;
-use App\Models\Testimonial;
 use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -38,11 +37,10 @@ class JobController extends Controller
         $jobs = Job::latest()->limit(10)->where('status', 1)->get();
         $categories = Category::with('jobs')->get();
         $posts = Post::where('status', 1)->get();
-        $testimonial = Testimonial::orderBy('id', 'DESC')->first();
 
         $companies = Company::get()->random(12);
 
-        return view('welcome', compact('jobs', 'companies', 'categories', 'posts', 'testimonial'));
+        return view('welcome', compact('jobs', 'companies', 'categories', 'posts', ));
     }
 
     /**
@@ -141,6 +139,7 @@ class JobController extends Controller
     public function applicant(): Factory|View|Application
     {
         $applicants = Job::has('users')->where('user_id', auth()->user()->id)->get();
+
         return view('jobs.applicants', compact('applicants'));
     }
 
@@ -164,6 +163,7 @@ class JobController extends Controller
         $user_id = Auth::id();
         $company = Company::where('user_id', $user_id)->first();
         $company_id = $company->id;
+
         Job::create([
             'user_id' => $user_id,
             'company_id' => $company_id,
@@ -208,12 +208,12 @@ class JobController extends Controller
     {
 
         //front search
-        $search = $request->get('search');
-        $address = $request->get('address');
+        $search = $request->get('search', '');
+        $address = $request->get('address' , '');
+
         if ($search && $address) {
             $jobs = Job::where('position', 'LIKE', '%' . $search . '%')
                 ->orWhere('title', 'LIKE', '%' . $search . '%')
-                ->orWhere('type', 'LIKE', '%' . $search . '%')
                 ->orWhere('address', 'LIKE', '%' . $address . '%')
                 ->paginate(20);
 

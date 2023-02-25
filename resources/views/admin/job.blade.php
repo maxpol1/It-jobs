@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1>All Jobs</h1><span style="float:right"><a href="/dashboard">Back</a></span>
+        <h1>Все вакансии</h1><span style="float:right"><a href="{{route('admin_dashboard')}}">Назад</a></span>
         @if(Session::has('message'))
 
             <div class="alert alert-success">{{Session::get('message')}}</div>
@@ -11,7 +11,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        All jobs
+                        Все вакансии
                     </div>
                     <div class="card-body">
 

@@ -2,7 +2,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6 mx-auto text-center mb-5 section-heading">
-            <h2>Recent Blog</h2>
+            <h2>Свежее в блоге</h2>
           </div>
         </div>
 
@@ -23,11 +23,6 @@
               <p>{{\Illuminate\Support\Str::limit($post->content,50)}}</p>
             </div>
             @endforeach
-
-
-
-
-
 
         </div>
 

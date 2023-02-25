@@ -1,25 +1,23 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreatePostsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('posts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->string('title');
             $table->string('slug');
             $table->text('content');
             $table->string('image');
-            $table->integer('staus');
+            $table->integer('status');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -27,11 +25,9 @@ class CreatePostsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('posts');
     }
-}
+};

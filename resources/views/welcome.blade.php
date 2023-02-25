@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 mb-5 mb-md-0" data-aos="fade-up" data-aos-delay="100">
-        <h2 class="mb-5 h3">Recent Jobs</h2>
+        <h2 class="mb-5 h3">Свежие вакансии</h2>
         <div class="rounded border jobs-wrap">
           @foreach($jobs as $job)
 
@@ -65,7 +65,7 @@
         </div>
 
         <div class="col-md-12 text-center mt-5">
-          <a href="{{route('alljobs')}}" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Show More Jobs</a>
+          <a href="{{route('alljobs')}}" class="btn btn-primary rounded py-3 px-5"><span class="icon-plus-circle"></span> Показать больше вакансий</a>
         </div>
       </div>
 
@@ -81,8 +81,6 @@
       <div class="col-md-6 text-center" data-aos="fade">
         <h1 class="h3 mb-0">Your Dream Job</h1>
         <p class="h3 text-white mb-5">Is Waiting For You</p>
-        <p><a href="/register" class="btn btn-outline-success py-3 px-4">Job seeker</a> <a href="{{route('employer.register')}}" class="btn btn-outline-warning py-3 px-4">Employer</a></p>
-
       </div>
     </div>
   </div>

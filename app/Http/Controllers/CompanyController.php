@@ -33,7 +33,7 @@ class CompanyController extends Controller
      */
     public function company(): Factory|View|Application
     {
-      $companies = Company::latest()->simplatePaginate(20);
+      $companies = Company::latest()->simplePaginate(20);
       return view('company.company',compact('companies'));
     }
 

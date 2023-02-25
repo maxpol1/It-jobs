@@ -11,9 +11,9 @@
             <input type="text" name="title" class="form-control">&nbsp;&nbsp;&nbsp;
         </div>
         <div class="form-group">
-            <label>Employment type&nbsp;</label>
+            <label>Вид занятости;</label>
             <select class="form-control" name="type">
-                    <option value="">-select-</option>
+                    <option value="">-выбрать-</option>
                     <option value="fulltime">fulltime</option>
                     <option value="parttime">parttime</option>
                     <option value="casual">casual</option>

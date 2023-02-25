@@ -1,13 +1,12 @@
 @component('mail::message')
 
-
-    Hi {{$data['friend_name']}}, {{$data['your_name']}}({{$data['your_email']}})
-    has refered you this job.
+    Здравствуйте {{$data['friend_name']}}, {{$data['your_name']}}({{$data['your_email']}})
+    порекомендовал вам эту работу.
 
     @component('mail::button', ['url' => $data['jobUrl']])
-        View Job
+        Посмотреть вакансию
     @endcomponent
 
-    Thanks,<br>
+    Спасибо,<br>
     {{ config('app.name') }}
 @endcomponent

@@ -62,15 +62,12 @@ Route::post('user/avatar', [UserController::class, 'avatar'])->name('avatar');
 
 //employer view
 Route::view('employer/register', 'auth.employer-register')->name('employer.register');
-
 Route::post('employer/register', [EmployerRegisterController::class, 'employerRegister'])->name('emp.register');
-
 Route::post('/applications/{id}', [JobController::class, 'apply'])->name('apply');
 
 
 //save and unsave job
 Route::post('/save/{id}', [FavouriteController::class, 'saveJob']);
-
 Route::post('/unsave/{id}', [FavouriteController::class, 'unSaveJob']);
 
 //category
@@ -86,24 +83,13 @@ Route::prefix('admin')->middleware('admin')->group(function() {
     Route::get('/dashboard/create', [DashboardController::class, 'create'])->name('post.create');
     Route::post('/dashboard/create', [DashboardController::class, 'store'])->name('post.store');
     Route::post('/dashboard/destroy', [DashboardController::class, 'destroy'])->name('post.delete');
-
     Route::get('/dashboard/{id}/edit', [DashboardController::class, 'edit'])->name('post.edit');
     Route::post('/dashboard/{id}/update', [DashboardController::class, 'update'])->name('post.update');
-
     Route::get('/dashboard/{id}/toggle', [DashboardController::class, 'toggle'])->name('post.toggle');
-    Route::get('/posts/{id}/{slug}', [DashboardController::class, 'show'])->name('post.show')->excludedMiddleware('admin');
-
-    Route::get('/dashboard/jobs', [DashboardController::class, 'getAllJobs']);
+    Route::get('/dashboard/jobs', [DashboardController::class, 'getAllJobs'])->name('jobs.all');
     Route::get('/dashboard/{id}/jobs', [DashboardController::class, 'changeJobStatus'])->name('job.status');
 });
-
-
-
-//testimonial
-Route::get('testimonial', [TestimonialController::class, 'index'])->middleware('admin');
-
-Route::get('testimonial/create', [TestimonialController::class, 'create'])->middleware('admin');
-Route::post('testimonial/create', [TestimonialController::class, 'store'])->name('testimonial.store')->middleware('admin');
+Route::get('/posts/{id}/{slug}', [DashboardController::class, 'show'])->name('post.show');
 
 //email
 Route::post('/job/mail', [EmailController::class, 'send'])->name('mail');

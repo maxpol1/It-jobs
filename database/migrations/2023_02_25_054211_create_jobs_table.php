@@ -1,21 +1,18 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateJobsTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('jobs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-
+            $table->id();
             $table->string('user_id');
             $table->string('company_id');
             $table->string('title');
@@ -28,17 +25,19 @@ class CreateJobsTable extends Migration
             $table->string('type');
             $table->integer('status');
             $table->date('last_date');
+            $table->integer('number_of_vacancy');
+            $table->integer('experience');
+            $table->string('gender');
+            $table->string('salary');
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('jobs');
     }
-}
+};
