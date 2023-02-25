@@ -23,7 +23,7 @@
         <div class="rounded border jobs-wrap">
           @foreach($jobs as $job)
 
-            <a href="{{route('jobs.show',[$job->id,$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">
+            <a href="{{route('jobs.show',[$job->slug])}}" class="job-item d-block d-md-flex align-items-center  border-bottom @if($job->type=='parttime') partime @elseif($job->type=='fulltime')fulltime @else freelance   @endif;">
               <div class="company-logo blank-logo text-center text-md-left pl-3">
                 @if(!empty($job->company->logo))
                   <img src="{{asset('uploads/logo')}}/{{$job->company->logo}}" alt="Image" class="img-fluid mx-auto">

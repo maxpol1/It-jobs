@@ -24,7 +24,7 @@
                     <td><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;{{$job->address}}</td>
                     <td><i class="fa fa-globe"aria-hidden="true"></i>&nbsp;{{$job->created_at->diffForHumans()}}</td>
                     <td>
-                        <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
+                        <a href="{{route('jobs.show',[$job->slug])}}">
                             <button class="btn btn-success btn-sm">     Apply
                             </button>
                         </a>

@@ -37,7 +37,7 @@ class EmailController extends Controller
             return redirect()->back()->with('message', 'Job link sent to ' . $emailTo);
 
         } catch (\Exception $e) {
-            return redirect()->back()->with('err_message', 'Sorry, Something went wrong.Please try later');
+            return redirect()->back()->with('err_message', $e->getMessage());
 
         }
 

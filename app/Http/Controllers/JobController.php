@@ -48,7 +48,7 @@ class JobController extends Controller
      * @param Job $job
      * @return Factory|View|Application
      */
-    public function show($id, Job $job): Factory|View|Application
+    public function show(Job $job): Factory|View|Application
     {
 
         $jobRecommendations = $this->jobRecommendations($job);
