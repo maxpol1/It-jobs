@@ -2,7 +2,7 @@
 
     namespace App\Http\Controllers;
 
-    use Illuminate\Http\Request;
+    use Illuminate\Contracts\Support\Renderable;
     use Illuminate\Support\Facades\Auth;
 
     class HomeController extends Controller
@@ -20,7 +20,7 @@
         /**
          * Show the application dashboard.
          *
-         * @return \Illuminate\Contracts\Support\Renderable
+         * @return Renderable
          */
         public function index()
         {
@@ -29,7 +29,7 @@
             }
             $adminRole = Auth::user()->roles()->pluck('name');
             if ($adminRole->contains('admin')) {
-                return redirect('/dashboard');
+                return to_route('admin_dashboard');
             }
 
 

@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Job;
+use Illuminate\Http\RedirectResponse;
 
 class FavouriteController extends Controller
 {
-    public function saveJob($id){
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function saveJob($id): RedirectResponse
+    {
     	$jobId = Job::find($id);
     	$jobId->favorites()->attach(auth()->user()->id);
     	return redirect()->back();
     }
 
-    public function unSaveJob($id){
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
+    public function unSaveJob($id): RedirectResponse
+    {
     	$jobId = Job::find($id);
     	$jobId->favorites()->detach(auth()->user()->id);
     	return redirect()->back();

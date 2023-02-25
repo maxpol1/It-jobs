@@ -12,7 +12,7 @@
         <h1>Recent Jobs</h1>
 
         <table class="table">
-            
+
             <tbody>
                 @foreach($jobs as $job)
                 <tr>
@@ -57,7 +57,7 @@
         @endif
       <div class="card-body">
         <h5 class="card-title">{{$company->cname}}</h5>
-        <p class="card-text">{{str_limit($company->description,20)}}</p>
+        <p class="card-text">{{\Illuminate\Support\Str::limit($company->description,20)}}</p>
        <center> <a href="{{route('company.index',[$company->id,$company->slug])}}" class="btn btn-outline-primary ">Visit company</a></center>
       </div>
     </div>
