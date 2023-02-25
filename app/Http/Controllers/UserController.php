@@ -60,8 +60,6 @@ class UserController extends Controller
             ]);
             return redirect()->back()->with('message','Cover letter Sucessfully Updated!');
 
-
-
    }
     public function resume(ProfileResumeUpdateRequest $request){
 
@@ -71,8 +69,6 @@ class UserController extends Controller
               'resume'=>$resume
             ]);
         return redirect()->back()->with('message','Resume Sucessfully Updated!');
-
-
 
    }
 
@@ -91,9 +87,5 @@ class UserController extends Controller
         }
 
    }
-
-
-
-
 
 }

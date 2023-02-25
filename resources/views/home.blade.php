@@ -10,16 +10,16 @@
             @foreach($jobs as $job)
             <div class="card">
                 <div class="card-header">{{$job->title}}</div>
-                
 
-                <div class="card-body">  
+
+                <div class="card-body">
                     <small class="badge badge-success">{{$job->position}}
                 </small>
 
                    <p> {{$job->description}}</p>
                 </div>
                 <div class="card-footer">
-                    <span><a href="{{route('jobs.show',[$job->id,$job->slug])}}">Read</a></span>
+                    <span><a href="{{route('jobs.show',[$job->slug])}}">Read</a></span>
                     <span class="float-right">Last date:{{$job->last_date}}</span>
                 </div>
 
@@ -33,8 +33,8 @@
             @endif
 
             @else
-            
-            You're logged in 
+
+            You're logged in
 
 
             @endif

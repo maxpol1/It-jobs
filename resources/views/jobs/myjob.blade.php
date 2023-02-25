@@ -38,7 +38,7 @@
                                     <td><i class="fa fa-globe"
                                            aria-hidden="true"></i>&nbsp;Дата:{{$job->created_at->diffForHumans()}}</td>
                                     <td>
-                                        <a href="{{route('jobs.show',[$job->id,$job->slug])}}">
+                                        <a href="{{route('jobs.show',[$job->slug])}}">
                                             <button class="btn btn-success btn-sm">
                                                 Промотреть
                                             </button>

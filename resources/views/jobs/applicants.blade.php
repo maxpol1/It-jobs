@@ -9,7 +9,7 @@
 
                     <div class="card">
                         <div class="card-header"><a
-                                href="{{route('jobs.show',[$applicant->id,$applicant->slug])}}"> {{$applicant->title}}</a>
+                                href="{{route('jobs.show',[$applicant->slug])}}"> {{$applicant->title}}</a>
                         </div>
 
                         <div class="card-body">

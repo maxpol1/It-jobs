@@ -40,7 +40,7 @@
                                             <a href="{{route('job.status',[$job->id])}}" class="badge badge-success">
                                                 Live</a>
                                         @endif</td>
-                                    <td><a href="{{route('jobs.show',[$job->id,$job->slug])}}" target="_blank">Read</a>
+                                    <td><a href="{{route('jobs.show',[$job->slug])}}" target="_blank">Read</a>
                                     </td>
                                 </tr>
                             @endforeach
